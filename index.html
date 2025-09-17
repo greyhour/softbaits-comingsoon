@@ -2,17 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Coming Soon</title>
+  <meta charset="UTF-8" />
+  <title>Softbaits NZ – Coming Soon</title>
 
   <!-- Mobile viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- SEO + Social Preview -->
+  <meta name="description" content="New Zealand's destination for softbaits and fishing accessories. Launching soon!" />
+  <meta property="og:title" content="Softbaits NZ – Coming Soon" />
+  <meta property="og:description" content="New Zealand's destination for softbaits and fishing accessories. Launching soon!" />
+  <meta property="og:image" content="https://softbaits.co.nz/preview.jpg" />
+  <meta property="og:url" content="https://softbaits.co.nz" />
+  <meta name="theme-color" content="#0277bd" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
     html,
@@ -29,9 +37,7 @@
       align-items: center;
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      height: 100vh;
       color: #ffffff;
-      padding: 0;
     }
 
     .card {
@@ -40,9 +46,8 @@
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
       width: 100%;
       max-width: 500px;
-      margin: 10px;
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(15px);
       opacity: 0;
       transform: translateY(20px);
@@ -52,8 +57,14 @@
     h1 {
       font-size: 2.75rem;
       color: #0277bd;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-weight: 700;
+    }
+
+    p.lead {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 2rem;
     }
 
     input.form-control {
@@ -62,13 +73,13 @@
       border-radius: 0.5rem;
       border: 2px solid #0277bd;
       background-color: #e3f2fd;
-      outline: none; /* Remove default outline */
+      outline: none;
       transition: all 0.3s ease;
     }
 
     input.form-control:focus {
-      border-color: #01579b; /* Darker blue when focused */
-      box-shadow: 0 0 5px rgba(1, 87, 155, 0.5); /* Add soft shadow effect on focus */
+      border-color: #01579b;
+      box-shadow: 0 0 5px rgba(1, 87, 155, 0.4);
     }
 
     button.btn {
@@ -85,13 +96,15 @@
       transform: scale(1.05);
     }
 
-    /* Success message fade */
     .alert-success {
       opacity: 0;
       max-height: 0;
       overflow: hidden;
       margin-top: 0;
       transition: opacity 0.6s ease, max-height 0.6s ease, margin-top 0.6s ease;
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
     }
 
     .alert-success.show {
@@ -130,30 +143,30 @@
 
   <div class="card">
     <h1>Our Store is Coming Soon 🚀</h1>
-    <p class="lead">We're preparing to bring you the best softbaits and fishing accessories. Stay tuned!</p>
+    <p class="lead">We're gearing up to bring you New Zealand’s best softbaits and fishing accessories. Get notified when we go live!</p>
 
     <form id="notifyForm" class="d-flex flex-column gap-3">
-      <input type="hidden" name="access_key" value="73321706-37ab-444c-b12c-eb923abb9d11">
+      <input type="hidden" name="access_key" value="73321706-37ab-444c-b12c-eb923abb9d11" />
 
-      <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter your email" required>
+      <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter your email" aria-label="Email address" required />
 
-      <input type="checkbox" name="botcheck" class="d-none">
+      <input type="checkbox" name="botcheck" class="d-none" />
 
       <button type="submit" class="btn btn-primary btn-lg">Notify Me</button>
 
-      <!-- Success Message -->
       <div class="alert alert-success mt-3" id="successMessage">
-        Thank you! We'll contact you soon.
+        You're on the line! We’ll hook you up when we launch.
       </div>
     </form>
   </div>
 
+  <!-- Scripts -->
   <script>
     const form = document.getElementById('notifyForm');
     const successMessage = document.getElementById('successMessage');
 
     form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // prevent default form submission
+      e.preventDefault();
 
       const formData = new FormData(form);
 
@@ -166,13 +179,13 @@
         const result = await response.json();
 
         if (result.success) {
-          // show success message with fade
           successMessage.classList.add('show');
           form.reset();
+          form.style.display = 'none';
 
-          // hide after 5 seconds
           setTimeout(() => {
             successMessage.classList.remove('show');
+            form.style.display = 'flex';
           }, 5000);
         } else {
           alert('Something went wrong, please try again.');
