@@ -3,17 +3,25 @@
 <head>
   <title>Coming Soon</title>
   <style>
+    html, body {
+      margin: 0;       /* Remove default margins */
+      padding: 0;      /* Remove default padding */
+      height: 100%;    /* Make html and body take full viewport height */
+      overflow: hidden; /* Optional: prevent scrolling entirely */
+    }
+
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       background: #f4f4f4;
       font-family: Arial, sans-serif;
     }
+
     h1 {
       font-size: 3rem;
       color: #333;
+      margin: 0; /* Remove header margin to prevent extra space */
     }
   </style>
 </head>
