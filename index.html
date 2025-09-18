@@ -40,13 +40,24 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      background: url('background.jpg') no-repeat center center fixed;
+      background: url('background.jpg') no-repeat center center;
       background-size: cover;
+      background-attachment: fixed;
       color: #ffffff;
       position: relative;
       min-height: 100vh;
       padding: 0 1rem;
       box-sizing: border-box;
+    }
+
+    /* iOS Safari fix for background images */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
     }
 
     body::before {
@@ -73,7 +84,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeSlideIn 1s forwards 0.3s;
-      margin: max(1rem, 50vh - 50%) 0;
+      margin: max(1rem, 50vh - 50%) 0 max(1rem, 50vh - 50%) 0;
     }
 
     .logo {
