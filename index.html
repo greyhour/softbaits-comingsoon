@@ -8,6 +8,11 @@
   <!-- Mobile viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="favicon.png" />
+  <link rel="shortcut icon" type="image/jpeg" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
   <!-- SEO + Social Preview -->
   <meta name="description" content="New Zealand's destination for softbaits and fishing accessories. Launching soon!" />
   <meta property="og:title" content="Softbaits NZ – Coming Soon" />
@@ -38,6 +43,19 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(1px);
+      z-index: -1;
     }
 
     .card {
@@ -52,6 +70,21 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeSlideIn 1s forwards 0.3s;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin: 0 auto 1.5rem auto;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     h1 {
@@ -126,6 +159,12 @@
         width: calc(100% - 20px);
       }
 
+      .logo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1rem auto;
+      }
+
       h1 {
         font-size: 2rem;
       }
@@ -142,8 +181,9 @@
 <body>
 
   <div class="card">
+    <img src="logo.jpg" alt="Softbaits NZ Logo" class="logo" />
     <h1>Our Store is Coming Soon 🚀</h1>
-    <p class="lead">We're gearing up to bring you New Zealand’s best softbaits and fishing accessories. Get notified when we go live!</p>
+    <p class="lead">We're gearing up to bring you New Zealand's best softbaits and fishing accessories. Get notified when we go live!</p>
 
     <form id="notifyForm" class="d-flex flex-column gap-3">
       <input type="hidden" name="access_key" value="73321706-37ab-444c-b12c-eb923abb9d11" />
@@ -155,7 +195,7 @@
       <button type="submit" class="btn btn-primary btn-lg">Notify Me</button>
 
       <div class="alert alert-success mt-3" id="successMessage">
-        You're on the line! We’ll hook you up when we launch.
+        You're on the line! We'll hook you up when we launch.
       </div>
     </form>
   </div>
