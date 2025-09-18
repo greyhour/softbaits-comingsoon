@@ -39,16 +39,19 @@
     body {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
       position: relative;
+      min-height: 100vh;
+      padding: 0 1rem;
+      box-sizing: border-box;
     }
 
     body::before {
       content: '';
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -70,6 +73,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeSlideIn 1s forwards 0.3s;
+      margin: max(1rem, 50vh - 50%) 0;
     }
 
     .logo {
@@ -154,19 +158,30 @@
     }
 
     @media (max-width: 576px) {
+      body {
+        padding: 1rem;
+      }
+
       .card {
-        padding: 2rem;
+        padding: 1.5rem;
         width: calc(100% - 20px);
+        margin-top: 0;
       }
 
       .logo {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         margin: 0 auto 1rem auto;
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      p.lead {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
       }
 
       input.form-control,
